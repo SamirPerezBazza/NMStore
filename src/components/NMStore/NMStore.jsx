@@ -1,40 +1,46 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
+import SearchBar from "../SearchBar/SearchBar";
+import Card from "../Card/Card";
 export const NMStore = () => {
   return (
     <>
-      <header>
-        <div className="container">
-          <div className="container-left">
-            <div className="logo-container">
-              <h1>nmstore</h1>
+      <Router>
+        <header>
+          <div className="container">
+            <div className="container-left">
+              <div className="logo-container">
+                <Link className="text-link" to="/">
+                  <h1>nmstore</h1>
+                </Link>
+              </div>
+              <hr />
+              <SearchBar />
+              <hr />
             </div>
-            <hr />
-            <div className="search-container">
-                <i class="fas fa-search"></i>
-              <input type="text" placeholder="Search items to buy"></input>
-            </div>
-            <hr />
+            <Link to="/cart">
+              <div className="cart-container">
+                <i class="fas fa-shopping-cart"></i>
+              </div>
+            </Link>
           </div>
+        </header>
 
-          <div className="cart-container">
-            <i class="fas fa-shopping-cart"></i>
-          </div>
-        </div>
-      </header>
+        <Switch>
+          <Route exact path="/">
+            <Card />
+          </Route>
+
+          <Route exact path="/cart">
+            <div>
+              <h1>Cart</h1>
+            </div>
+          </Route>
+        </Switch>
+      </Router>
     </>
   );
 };
 
-{
-  /* <div className="logo-container">
-                        <h1>nmstore</h1>
-                    </div>
-                    <div className="search-container">
-                        <input type="text" placeholder="Search items to buy"></input>
-                    </div>
-                    <div className="cart-container">
-                        
-                    </div> */
-}
 export default NMStore;
