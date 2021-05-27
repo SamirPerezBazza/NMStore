@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import bote from "./img1.jpg";
 
-export const Card = () => {
+export const Card = ({title, summary, img, price, offer, id, funcCart}) => {
   const [counter, setCounter] = useState(1);
+
 
   //handdleAdd
   const handdleAdd = () => setCounter(counter + 1);
@@ -16,23 +16,27 @@ export const Card = () => {
     }
   };
 
+  const handdleCart= () => {
+    funcCart(id,counter);
+    setCounter(1);
+  }
+  
+  
   return (
     <>
       <div className="card">
-        <img src={bote} alt="Boat" />
-        <h2>Naturaleza</h2>
-        <h3>$500</h3>
+        <img src={img} alt="Product" />
+        <h2>{title}</h2>
+        <h3>${price}</h3>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel,
-          excepturi unde?
+          {summary}
         </p>
         <div className="order-container">
           <button onClick={handdleAdd}>+</button>
           <span>{counter}</span>
           <button onClick={handdleSubstract}>-</button>
-          <button>
-            {" "}
-            <i class="fas fa-shopping-cart"></i>
+          <button onClick={handdleCart}>
+            <i className="fas fa-shopping-cart"></i>
           </button>
         </div>
       </div>

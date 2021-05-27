@@ -1,11 +1,16 @@
 import React from 'react'
 
-export const SearchBar = () => {
+export const SearchBar = ({func}) => {
+    const handleSearch=(e)=>{
+        func(e.target.value.toLowerCase());
+    }
+
+
     return (
         <>
             <div className="search-container">
-              <i class="fas fa-search"></i>
-              <input type="text" placeholder="Search items to buy"></input>
+              <i className="fas fa-search"></i>
+              <input type="text" placeholder="Search items to buy" onChange={handleSearch}></input>
             </div>
         </>
     )

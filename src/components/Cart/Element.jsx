@@ -1,18 +1,24 @@
-import React from 'react'
-import imagenB from "../Card/img1.jpg"
-export const Element = () => {
+import React from 'react';
+
+export const Element = ({data, quantity, deleteElement}) => {
+
+    const remove = ()=>{
+        deleteElement(data.id);
+    }
+
     return (
         <div className="element-container">
-            <img src={imagenB}/>
+            <button onClick={remove}><i className="fas fa-trash-alt"></i></button>
+            <img src={data.img} alt="Especific of the product"/>
             <div className="element-description">
             
-                <h2>Zapatos</h2>
-                <p>Zapatos para los pies que caminan </p>
+                <h2>{data.title}</h2>
+                <p>{data.summary}</p>
             
                 
             </div>
-            <div>Cantidad</div>
-            <div>$90k</div>
+            <div>{quantity}</div>
+            <div className="total-container">${data.price*quantity}</div>
         </div>
     )
 }
