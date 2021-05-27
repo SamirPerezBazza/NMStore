@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import SearchBar from "../SearchBar/SearchBar";
 import Card from "../Card/Card";
+import Cart from "../Cart/Cart";
 export const NMStore = () => {
   return (
     <>
@@ -33,9 +34,7 @@ export const NMStore = () => {
           </Route>
 
           <Route exact path="/cart">
-            <div>
-              <h1>Cart</h1>
-            </div>
+            <Cart />
           </Route>
         </Switch>
       </Router>
